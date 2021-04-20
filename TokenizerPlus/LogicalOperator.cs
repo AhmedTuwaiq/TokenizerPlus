@@ -18,7 +18,7 @@ namespace TokenizerPlus
                 isThereMore = "";
                 int i = 1;
                 while (i <= op.Length)
-                    isThereMore += t.peak(i++);
+                    isThereMore += t.peek(i++);
                 OpLen = op.Length;
                 if (isThereMore == op) return true;
 
@@ -27,7 +27,7 @@ namespace TokenizerPlus
         }
         public override bool tokenizable(Tokenizer t)
         {
-            return t.hasMore() && isOperator(t);
+            return t.hasNext() && isOperator(t);
         }
 
         public override Token tokenize(Tokenizer t)
@@ -35,11 +35,11 @@ namespace TokenizerPlus
             Token token = new Token();
             token.value = "";
             token.type = "logical operator";
-            token.position = t.currentPosition;
+            token.position = t.currentPos;
             token.lineNumber = t.lineNumber;
 
             // int i = 0;
-            while (t.hasMore() && OpLen > 0)
+            while (t.hasNext() && OpLen > 0)
             {
                 token.value += t.next();
                 OpLen--;

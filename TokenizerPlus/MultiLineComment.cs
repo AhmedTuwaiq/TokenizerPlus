@@ -7,7 +7,7 @@ namespace TokenizerPlus
     {
         public override bool tokenizable(Tokenizer t)
         {
-            return t.hasMore() && t.peak() == '/' && t.peak(2) == '*';
+            return t.hasNext() && t.peek() == '/' && t.peek(2) == '*';
         }
 
         public override Token tokenize(Tokenizer t)
@@ -15,10 +15,10 @@ namespace TokenizerPlus
             Token token = new Token();
             token.value = "";
             token.type = "Multi Line Comments";
-            token.position = t.currentPosition;
+            token.position = t.currentPos;
             token.lineNumber = t.lineNumber;
 
-            while (t.hasMore() && (t.peak() != '*' || t.peak(2) != '/'))
+            while (t.hasNext() && (t.peek() != '*' || t.peek(2) != '/'))
             {
                 token.value += t.next();
             }

@@ -18,7 +18,7 @@ namespace TokenizerPlus
             int i = 0;
                 while (i < maxLen)
                 {
-                    collector += t.peak(i+1);
+                    collector += t.peek(i+1);
                     foreach (var op in operators)
                     {
                         if( collector == op )
@@ -38,7 +38,7 @@ namespace TokenizerPlus
 
         public override bool tokenizable(Tokenizer t)
         {
-            return t.hasMore() && isOperator(t);
+            return t.hasNext() && isOperator(t);
         }
 
         public override Token tokenize(Tokenizer t)
@@ -46,10 +46,10 @@ namespace TokenizerPlus
             Token token = new Token();
             token.value = "";
             token.type = "Relational operator";
-            token.position = t.currentPosition;
+            token.position = t.currentPos;
             token.lineNumber = t.lineNumber;
 
-            while (t.hasMore() && OpLen > 0)
+            while (t.hasNext() && OpLen > 0)
             {
                 token.value += t.next();
                 OpLen--;
