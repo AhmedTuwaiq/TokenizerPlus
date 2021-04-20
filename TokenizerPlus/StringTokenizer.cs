@@ -38,11 +38,22 @@ namespace TokenizerPlus
             }
 
             if (token.value.Length < 2)
+            {
+                tokenizer.currentPos = token.position - 1;
                 return null;
+            }
 
             char ch1 = token.value[token.value.Length - 1], ch2 = token.value[token.value.Length - 2];
 
-            return ch1 == '"' && ch2 != '\\' ? token : null;
+            if(ch1 == '"' && ch2 != '\\')
+            {
+                return token;
+            }
+            else
+            {
+                tokenizer.currentPos = token.position - 1;
+                return null;
+            }
         }
     }
 }

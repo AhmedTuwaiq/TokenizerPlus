@@ -18,7 +18,7 @@ namespace TokenizerPlus
             var token = new Token();
             token.value = "";
             token.type = "space";
-            token.position = tokenizer.currentPos;
+            token.position = tokenizer.currentPos + 1;
             token.lineNumber = tokenizer.lineNumber;
 
             while (tokenizer.hasNext() && Char.IsWhiteSpace(tokenizer.peek()))
