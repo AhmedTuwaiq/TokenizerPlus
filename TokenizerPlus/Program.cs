@@ -11,6 +11,7 @@ namespace TokenizerPlus
             Tokenizable[] handers = new Tokenizable[] {
                 new StringTokenizer(),
                 new SpaceTokenizer(),
+                new IdTokenizer(),
                 new IntOrfloatTokenizer(),
                 new XMLTokenizable(),
                 new UserTokenizable(),
