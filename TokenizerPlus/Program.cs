@@ -7,10 +7,14 @@ namespace TokenizerPlus
         public static void Main(string[] args)
         {
             Console.WriteLine("Start of processing");
-            Tokenizer t = new Tokenizer("\"test\" #vjdnkd 20 20.12f hhh aaaf 19 if  _jdc_nkjd  20f @Abdulrahman <to> hhh  </to> jjj ");
+            Tokenizer t = new Tokenizer("#vjdnkd 20 20.12f hhh aaaf 19 if  _jdc_nkjd  20f @Abdulrahman <to> hhh  </to> jjj ");
             Tokenizable[] handers = new Tokenizable[] {
                 new StringTokenizer(),
-                new SpaceTokenizer()
+                new SpaceTokenizer(),
+                new IntOrfloatTokenizer(),
+                new XMLTokenizable(),
+                new UserTokenizable(),
+                new HashTokenizable()
             };
             Token token = t.tokenize(handers);
 
