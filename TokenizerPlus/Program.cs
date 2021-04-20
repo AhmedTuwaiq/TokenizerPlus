@@ -15,7 +15,11 @@ namespace TokenizerPlus
                 new IntOrfloatTokenizer(),
                 new XMLTokenizable(),
                 new UserTokenizable(),
-                
+                new SingleLineComment(),
+                new MultiLineComment(),
+                new LogicalOperator(),
+                new BitWiseOperator(),
+                new RelationalOperator(),
                 new HexTokenizer(),
                 new BractsTokenizer()
             };
